@@ -50,5 +50,12 @@ dependencies {
     implementation(platform("com.google.firebase:firebase-bom:32.5.0"))
     implementation("com.google.firebase:firebase-analytics")
     implementation("com.google.firebase:firebase-auth")
+    implementation("com.google.firebase:firebase-firestore")
+
+    // https://mvnrepository.com/artifact/io.reactivex.rxjava3/rxjava
+//    implementation("io.reactivex.rxjava3:rxjava:3.1.6")
+// https://mvnrepository.com/artifact/io.reactivex.rxjava3/rxandroid
+    implementation("io.reactivex.rxjava3:rxandroid:3.0.2")
+
 
 }
