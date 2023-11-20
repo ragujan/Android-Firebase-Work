@@ -51,11 +51,16 @@ dependencies {
     implementation("com.google.firebase:firebase-analytics")
     implementation("com.google.firebase:firebase-auth")
     implementation("com.google.firebase:firebase-firestore")
+    implementation("com.google.firebase:firebase-storage")
 
     // https://mvnrepository.com/artifact/io.reactivex.rxjava3/rxjava
 //    implementation("io.reactivex.rxjava3:rxjava:3.1.6")
 // https://mvnrepository.com/artifact/io.reactivex.rxjava3/rxandroid
-    implementation("io.reactivex.rxjava3:rxandroid:3.0.2")
+//    implementation("io.reactivex.rxjava3:rxandroid:3.0.2")
+    // https://mvnrepository.com/artifact/io.reactivex.rxjava3/rxjava
+    implementation("io.reactivex.rxjava3:rxjava:3.1.6")
 
+// https://mvnrepository.com/artifact/io.reactivex.rxjava3/rxandroid
+    implementation("io.reactivex.rxjava3:rxandroid:3.0.0")
 
 }

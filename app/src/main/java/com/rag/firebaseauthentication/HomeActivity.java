@@ -18,6 +18,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.rag.firebaseauthentication.databinding.ActivityHomeBinding;
 import com.rag.firebaseauthentication.databinding.ActivityMainBinding;
+import com.rag.firebaseauthentication.util.ui.ListenerUtil;
 
 import java.util.Arrays;
 import java.util.Date;
@@ -58,6 +59,14 @@ public class HomeActivity extends AppCompatActivity {
                 addNestedData();
             }
         });
+        binding.uploadImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(HomeActivity.this, UploadImage.class);
+                startActivity(intent);
+            }
+        });
+        ListenerUtil.onClickBtnIntent(binding.button,this, UploadImage.class);
     }
 
     private void addData() {
