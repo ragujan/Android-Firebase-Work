@@ -1,22 +1,18 @@
-package com.rag.firebaseauthentication.util.ui;
+package com.rag.firebaseauthentication.util;
 
-import static com.rag.firebaseauthentication.util.ui.Constants.foodImageFolderPath;
+import static com.rag.firebaseauthentication.util.Constants.foodImageFolderPath;
 
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Random;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
-import io.reactivex.rxjava3.annotations.NonNull;
 import io.reactivex.rxjava3.core.Single;
-import io.reactivex.rxjava3.core.SingleObserver;
-import io.reactivex.rxjava3.disposables.Disposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
-public class ImageUploadWork {
+public class UniqueNameGenerationFirebase {
 
     public static Single<String> getUniqueImageName() {
         return Single.<String>create(emitter -> {
@@ -61,47 +57,6 @@ public class ImageUploadWork {
                 })
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
-    }
-
-    public static List<String> getNamesFirebase() {
-        FirebaseStorage storage = FirebaseStorage.getInstance();
-        StorageReference listRef = storage.getReference().child(foodImageFolderPath);
-
-        List<String> names = new LinkedList<>();
-        listRef.listAll()
-                .addOnSuccessListener(listResult -> {
-
-                    for (StorageReference prefix : listResult.getPrefixes()) {
-                        // All the prefixes under listRef.
-                        // You may call listAll() recursively on them.
-                    }
-
-                    for (StorageReference item : listResult.getItems()) {
-
-                        names.add(item.getName());
-                    }
-
-                });
-
-        return names;
-    }
-
-
-    private String generateRandomString(List<String> existingNames, String baseImageName) {
-        Random random = new Random();
-        String randomImageName;
-
-        do {
-            // Generate a random suffix
-            String randomSuffix = String.valueOf(random.nextInt(1000));
-
-            // Combine the base name and suffix to create a random string
-            randomImageName = baseImageName + "_" + randomSuffix;
-
-            // Check if the generated name is not in the existing list; if not, return it
-        } while (existingNames.contains(randomImageName));
-
-        return randomImageName;
     }
 
     public static Single<String> observeUniqueName() {

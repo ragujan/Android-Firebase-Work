@@ -1,4 +1,4 @@
-package com.rag.firebaseauthentication.util.ui;
+package com.rag.firebaseauthentication.util;
 
 import android.content.Context;
 import android.content.Intent;

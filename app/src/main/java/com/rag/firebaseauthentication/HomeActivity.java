@@ -17,8 +17,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.rag.firebaseauthentication.databinding.ActivityHomeBinding;
-import com.rag.firebaseauthentication.databinding.ActivityMainBinding;
-import com.rag.firebaseauthentication.util.ui.ListenerUtil;
+import com.rag.firebaseauthentication.util.ListenerUtil;
 
 import java.util.Arrays;
 import java.util.Date;

@@ -1,7 +1,7 @@
 package com.rag.firebaseauthentication;
 
-import static com.rag.firebaseauthentication.util.ui.Constants.foodImageFolderPath;
-import static com.rag.firebaseauthentication.util.ui.ImageUploadWork.observeUniqueName;
+import static com.rag.firebaseauthentication.util.Constants.foodImageFolderPath;
+import static com.rag.firebaseauthentication.util.UniqueNameGenerationFirebase.observeUniqueName;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.PickVisualMediaRequest;
@@ -24,7 +24,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.rag.firebaseauthentication.databinding.ActivityUploadImageBinding;
-import com.rag.firebaseauthentication.util.ui.ImageUploadWork;
+import com.rag.firebaseauthentication.util.UploadImageFirebase;
 
 import java.io.ByteArrayOutputStream;
 
@@ -76,8 +76,21 @@ public class UploadImage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                if (!uniqueImageName.equals("")) {
-                    uploadImage(binding.chosenImage, uniqueImageName);
+                if (!uniqueImageName.equals("") || binding.chosenImage.getDrawable() != null) {
+                    UploadImageFirebase.uploadImage(binding.chosenImage,uniqueImageName)
+                            .subscribe(
+                                    uploadStatus -> {
+                                        if(uploadStatus){
+                                            binding.chosenImage.setImageResource(0);
+                                            uniqueImageName = "";
+                                        }
+                                    },
+                                    throwable -> {
+
+                                    }
+                            );
+                }else{
+                    Toast.makeText(UploadImage.this, "Invalie details", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -85,65 +98,11 @@ public class UploadImage extends AppCompatActivity {
     }
 
     public void uploadImage(ImageView imageView, String uniqueImageName) {
-        imageView.setDrawingCacheEnabled(true);
-        imageView.buildDrawingCache();
-        Bitmap bitmap = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-        byte[] data = baos.toByteArray();
-
-        FirebaseStorage storage = FirebaseStorage.getInstance();
-        StorageReference storageRef = storage.getReference();
-        StorageReference myImageRef = storageRef.child(foodImageFolderPath + "/"+uniqueImageName);
 
 
-        UploadTask uploadTask = myImageRef.putBytes(data);
-        uploadTask.addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception exception) {
-                // Handle unsuccessful uploads
-            }
-        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                // taskSnapshot.getMetadata() contains file metadata such as size, content-type, etc.
-                // ...
-                Toast.makeText(UploadImage.this, "Upload success", Toast.LENGTH_SHORT).show();
-
-                System.out.println("uploaded file lists");
-//                Generation.generateFoodImageName();
-
-            }
-        });
     }
 
-    public void uploadImageTest() {
-        FirebaseStorage storage = FirebaseStorage.getInstance();
-        StorageReference storageRef = storage.getReference();
-        StorageReference spaceRef = storageRef.child("images/space.jpg");
-        System.out.println("hey hey");
-// Points to the root reference
-        storageRef = storage.getReference();
 
-// Points to "images"
-        StorageReference imagesRef = storageRef.child("images");
-
-// Points to "images/space.jpg"
-// Note that you can use variables to create child values
-        String fileName = "space.jpg";
-        spaceRef = imagesRef.child(fileName);
-
-// File path is "images/space.jpg"
-        String path = spaceRef.getPath();
-
-// File name is "space.jpg"
-        String name = spaceRef.getName();
-
-// Points to "images"
-        imagesRef = spaceRef.getParent();
-        System.out.println("path is " + path);
-
-    }
 
     public void imageChoose() {
 
