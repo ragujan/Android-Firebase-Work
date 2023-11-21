@@ -70,13 +70,8 @@ public class HomeActivity extends AppCompatActivity {
         Context context = this;
         ListenerUtil.onClickBtnIntent(binding.viewImagesBtn,context, ViewImages.class );
         ListenerUtil.onClickBtnIntent(binding.uploadImageBtn,context, UploadImage.class);
-//        binding.viewImagesBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(HomeActivity.this, ViewImages.class);
-//                startActivity(intent);
-//            }
-//        });
+        ListenerUtil.onClickBtnIntent(binding.firestoreTestBtn,context, FireStoreTest.class);
+
     }
 
 

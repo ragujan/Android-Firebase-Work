@@ -30,8 +30,8 @@
         android:id="@+id/addTestData"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="62dp"
-        android:layout_marginTop="49dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="48dp"
         android:text="Add Test Data"
         app:layout_constraintStart_toEndOf="@+id/logoutBtn"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
@@ -40,8 +40,8 @@
         android:id="@+id/uploadImageBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="16dp"
         android:text="Upload Image"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logoutBtn" />
@@ -50,9 +50,19 @@
         android:id="@+id/viewImagesBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="84dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
         android:text="View Images"
         app:layout_constraintStart_toEndOf="@+id/uploadImageBtn"
         app:layout_constraintTop_toBottomOf="@+id/addTestData" />
+
+    <Button
+        android:id="@+id/firestoreTestBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="28dp"
+        android:text="Firestore Test"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/uploadImageBtn" />
 </androidx.constraintlayout.widget.ConstraintLayout>
