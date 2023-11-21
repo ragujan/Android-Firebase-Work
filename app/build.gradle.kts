@@ -62,5 +62,7 @@ dependencies {
 
 // https://mvnrepository.com/artifact/io.reactivex.rxjava3/rxandroid
     implementation("io.reactivex.rxjava3:rxandroid:3.0.0")
+    implementation ("com.github.bumptech.glide:glide:4.16.0")
+    implementation("com.squareup.picasso:picasso:2.8")
 
 }

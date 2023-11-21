@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/logoutBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -33,16 +33,26 @@
         android:layout_marginStart="62dp"
         android:layout_marginTop="49dp"
         android:text="Add Test Data"
-        app:layout_constraintStart_toEndOf="@+id/button"
+        app:layout_constraintStart_toEndOf="@+id/logoutBtn"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <Button
-        android:id="@+id/uploadImage"
+        android:id="@+id/uploadImageBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="72dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="80dp"
         android:text="Upload Image"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        app:layout_constraintTop_toBottomOf="@+id/logoutBtn" />
+
+    <Button
+        android:id="@+id/viewImagesBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="80dp"
+        android:text="View Images"
+        app:layout_constraintStart_toEndOf="@+id/uploadImageBtn"
+        app:layout_constraintTop_toBottomOf="@+id/addTestData" />
 </androidx.constraintlayout.widget.ConstraintLayout>

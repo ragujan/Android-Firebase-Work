@@ -13,7 +13,7 @@ public class ListenerUtil {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context,destinationActivity.getClass());
+                Intent intent = new Intent(context,destinationActivity);
                 context.startActivity(intent);
             }
         });

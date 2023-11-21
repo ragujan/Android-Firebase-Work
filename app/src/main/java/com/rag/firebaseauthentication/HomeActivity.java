@@ -5,6 +5,7 @@ import static android.content.ContentValues.TAG;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -37,8 +38,9 @@ public class HomeActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if (currentUser != null) {
+
             binding.textView.setText("User is there " + mAuth.getCurrentUser().getEmail());
-            binding.button.setOnClickListener(new View.OnClickListener() {
+            binding.logoutBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     FirebaseAuth.getInstance().signOut();
@@ -58,15 +60,25 @@ public class HomeActivity extends AppCompatActivity {
                 addNestedData();
             }
         });
-        binding.uploadImage.setOnClickListener(new View.OnClickListener() {
+        binding.uploadImageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(HomeActivity.this, UploadImage.class);
                 startActivity(intent);
             }
         });
-        ListenerUtil.onClickBtnIntent(binding.button,this, UploadImage.class);
+        Context context = this;
+        ListenerUtil.onClickBtnIntent(binding.viewImagesBtn,context, ViewImages.class );
+        ListenerUtil.onClickBtnIntent(binding.uploadImageBtn,context, UploadImage.class);
+//        binding.viewImagesBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(HomeActivity.this, ViewImages.class);
+//                startActivity(intent);
+//            }
+//        });
     }
+
 
     private void addData() {
         FirebaseFirestore db = FirebaseFirestore.getInstance();

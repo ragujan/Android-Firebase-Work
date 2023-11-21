@@ -24,11 +24,6 @@ public class UniqueNameGenerationFirebase {
                             .addOnSuccessListener(listResult -> {
                                 List<String> names = new LinkedList<>();
 
-                                for (StorageReference prefix : listResult.getPrefixes()) {
-                                    // All the prefixes under listRef.
-                                    // You may call listAll() recursively on them.
-                                }
-
                                 for (StorageReference item : listResult.getItems()) {
 
                                     names.add(item.getName());
@@ -41,16 +36,12 @@ public class UniqueNameGenerationFirebase {
                                     isNameUnique = false;
                                 }
                                 while (!isNameUnique) {
-                                    System.out.println("hey");
                                     if (names.contains(newName)) {
                                         newName = generateString();
                                     } else {
                                         isNameUnique = true;
                                     }
                                 }
-                                System.out.println("list size is " + names.size() + " " + names.get(0));
-                                System.out.println("new name is " + newName);
-
                                 emitter.onSuccess(newName);
                             })
                             .addOnFailureListener(emitter::onError);
