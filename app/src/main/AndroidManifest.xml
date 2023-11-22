@@ -16,6 +16,9 @@
         android:theme="@style/Theme.FirebaseAuthentication"
         tools:targetApi="31">
         <activity
+            android:name=".ViewFoodItems"
+            android:exported="false" />
+        <activity
             android:name=".FireStoreTest"
             android:exported="false" />
         <activity

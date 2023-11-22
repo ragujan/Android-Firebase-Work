@@ -176,7 +176,16 @@ public class UploadImage extends AppCompatActivity implements AdapterView.OnItem
                                             UploadFoodItem.observeFoodItemUploading(foodDomain)
                                                     .subscribe(
                                                             uploadedFoodItemStatus->{
+                                                                binding.foodTitleField.setText("");
+                                                                binding.foodPriceField.setText("");
+                                                                binding.foodItemDescriptionTextField.setText("");
+                                                                binding.preparationTimeTextField.setText("");
+                                                                binding.caloryCount.setText("");
+                                                                binding.categorySpinner.setSelection(0);
+                                                                uniqueImageName = "";
+                                                                binding.chosenImage.setImageDrawable(null);
                                                                 Toast.makeText(UploadImage.this, "Fast Food Items uploaded Successfully", Toast.LENGTH_SHORT).show();
+
                                                             },
                                                             throwable -> {
 
