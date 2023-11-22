@@ -72,6 +72,7 @@ public class HomeActivity extends AppCompatActivity {
         ListenerUtil.onClickBtnIntent(binding.uploadImageBtn,context, UploadFoodItemActivity.class);
         ListenerUtil.onClickBtnIntent(binding.firestoreTestBtn,context, FireStoreTest.class);
         ListenerUtil.onClickBtnIntent(binding.viewFoodItemsBtn,context, ViewFoodItemsActivity.class);
+        ListenerUtil.onClickBtnIntent(binding.testActivityBtn,context, TestActivity.class);
 
 
     }

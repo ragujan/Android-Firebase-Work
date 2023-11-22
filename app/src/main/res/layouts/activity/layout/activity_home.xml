@@ -75,4 +75,14 @@
         android:text="View Food Items"
         app:layout_constraintStart_toEndOf="@+id/firestoreTestBtn"
         app:layout_constraintTop_toBottomOf="@+id/viewImagesBtn" />
+
+    <Button
+        android:id="@+id/testActivityBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="51dp"
+        android:layout_marginTop="48dp"
+        android:text="Test Activity"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/firestoreTestBtn" />
 </androidx.constraintlayout.widget.ConstraintLayout>

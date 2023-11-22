@@ -35,6 +35,20 @@ android {
     buildFeatures {
         viewBinding = true
     }
+    sourceSets {
+        getByName("main") {
+            res {
+                srcDirs("src\\main\\res", "src\\main\\res\\layouts\\activity",
+                    "src\\main\\res",
+                    "src\\main\\res\\fragment", "src\\main\\res", "src\\main\\res\\layouts\\viewholder",
+                    "src\\main\\res",
+                    "src\\main\\res\\layouts\\fragment"
+                )
+            }
+        }
+    }
+
+
 }
 
 dependencies {
