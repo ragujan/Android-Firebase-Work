@@ -4,13 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:layout_margin="8dp"
     android:background="@color/white">
 
     <ImageView
         android:id="@+id/cmnFoodImageView"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -27,6 +30,7 @@
         android:textColor="@color/black"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cmnFoodImageView" />
 
@@ -43,16 +47,16 @@
 
     <TextView
         android:id="@+id/cmnFoodAvailableStatusView"
-        android:layout_width="16dp"
-        android:layout_height="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="40dp"
-        android:background="@drawable/available_status_circle"
-        app:layout_constraintStart_toEndOf="@+id/cmnFoodPriceView"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="140dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/unavailable_status_circle"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cmnfoodTitleView" />
 
     <TextView
-        android:id="@+id/textView9"
+        android:id="@+id/cmnFoodAvailableStatusMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"

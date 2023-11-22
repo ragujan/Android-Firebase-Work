@@ -19,7 +19,7 @@ import java.util.List;
 public class AllFoodListAdapter extends RecyclerView.Adapter<AllFoodListAdapter.ViewHolder> {
 
 
-    List<FoodDomain> foodDomainList ;
+    List<FoodDomain> foodDomainList;
     ViewGroup parent;
 
     public AllFoodListAdapter(List<FoodDomain> foodDomainList) {
@@ -29,7 +29,7 @@ public class AllFoodListAdapter extends RecyclerView.Adapter<AllFoodListAdapter.
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View inflate = LayoutInflater.from(parent.getContext()).inflate(R.layout.common_food_item_view_holder,parent,false);
+        View inflate = LayoutInflater.from(parent.getContext()).inflate(R.layout.common_food_item_view_holder, parent, false);
         this.parent = parent;
 
         return new ViewHolder(inflate);
@@ -41,8 +41,13 @@ public class AllFoodListAdapter extends RecyclerView.Adapter<AllFoodListAdapter.
         FoodDomain foodDomain = foodDomainList.get(position);
         holder.foodTitle.setText(foodDomain.getTitle().toString());
         holder.foodPrice.setText(foodDomain.getPrice().toString());
-        if(foodDomain.getAvailable() ==true){
-            holder.foodAvailableStatus.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(),R.color.postiveGreen));
+        if (foodDomain.getAvailable() == true) {
+            holder.foodAvailableMessageLabel.setText("Available");
+            holder.foodAvailableStatus.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(), R.drawable.available_status_circle));
+        } else {
+
+            holder.foodAvailableStatus.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(), R.drawable.unavailable_status_circle));
+            holder.foodAvailableMessageLabel.setText("Unavailable");
         }
         Glide.with(holder.itemView.getContext()).load(foodDomain.getImageUrl()).into(holder.foodImage);
 
@@ -53,12 +58,13 @@ public class AllFoodListAdapter extends RecyclerView.Adapter<AllFoodListAdapter.
         return foodDomainList.size();
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder{
+    class ViewHolder extends RecyclerView.ViewHolder {
 
         ImageView foodImage;
         TextView foodTitle;
         TextView foodPrice;
         TextView foodAvailableStatus;
+        TextView foodAvailableMessageLabel;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -66,6 +72,7 @@ public class AllFoodListAdapter extends RecyclerView.Adapter<AllFoodListAdapter.
             foodTitle = itemView.findViewById(R.id.cmnfoodTitleView);
             foodPrice = itemView.findViewById(R.id.cmnFoodPriceView);
             foodAvailableStatus = itemView.findViewById(R.id.cmnFoodAvailableStatusView);
+            foodAvailableMessageLabel = itemView.findViewById(R.id.cmnFoodAvailableStatusMessage);
 
         }
     }
