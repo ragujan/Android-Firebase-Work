@@ -1,6 +1,6 @@
-package com.rag.firebaseauthentication.util;
+package com.rag.firebaseauthentication.util.firebaseUtil;
 
-import static com.rag.firebaseauthentication.util.Constants.foodImageFolderPath;
+import static com.rag.firebaseauthentication.util.Constants.FOOD_IMAGE_FOLDER_PATH;
 
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -17,7 +17,7 @@ public class UniqueNameGenerationFirebase {
     public static Single<String> getUniqueImageName() {
         return Single.<String>create(emitter -> {
                     FirebaseStorage storage = FirebaseStorage.getInstance();
-                    StorageReference listRef = storage.getReference().child(foodImageFolderPath);
+                    StorageReference listRef = storage.getReference().child(FOOD_IMAGE_FOLDER_PATH);
 
                     String generatedName = generateString();
                     listRef.listAll()

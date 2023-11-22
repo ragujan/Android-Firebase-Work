@@ -39,8 +39,8 @@
 
             <EditText
                 android:id="@+id/foodTitleField"
-                android:layout_width="217dp"
-                android:layout_height="60dp"
+                android:layout_width="250dp"
+                android:layout_height="64dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="24dp"
                 android:autofillHints="Food Title"
@@ -65,7 +65,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="264dp"
+                android:layout_marginTop="620dp"
                 android:text="Upload Food"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/foodTitleField" />
@@ -82,15 +82,104 @@
 
             <EditText
                 android:id="@+id/foodPriceField"
-                android:layout_width="211dp"
-                android:layout_height="54dp"
+                android:layout_width="253dp"
+                android:layout_height="53dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="24dp"
+                android:autofillHints="Price"
+                android:ems="10"
+                android:hint="Price"
+                android:inputType="text"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+            <TextView
+                android:id="@+id/foodItemDescriptionLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="8dp"
+                android:text="Food Item Description"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/foodPriceField" />
+
+            <EditText
+                android:id="@+id/foodItemDescriptionTextField"
+                android:layout_width="252dp"
+                android:layout_height="83dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="24dp"
                 android:ems="10"
-                android:inputType="text"
-                android:text="Name"
+                android:gravity="start|top"
+                android:hint="Food Description"
+                android:inputType="textMultiLine"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView4" />
+                app:layout_constraintTop_toBottomOf="@+id/foodItemDescriptionLabel" />
+
+            <TextView
+                android:id="@+id/preparationTimeLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="8dp"
+                android:text="Preparation Time"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/foodItemDescriptionTextField" />
+
+            <EditText
+                android:id="@+id/preparationTimeTextField"
+                android:layout_width="215dp"
+                android:layout_height="57dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="24dp"
+                android:ems="10"
+                android:hint="Preparation Time"
+                android:inputType="number"
+                android:text="10"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/preparationTimeLabel" />
+
+            <Spinner
+                android:id="@+id/categorySpinner"
+                android:layout_width="361dp"
+                android:layout_height="61dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="28dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/categoryLabel" />
+
+            <TextView
+                android:id="@+id/categoryLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="24dp"
+                android:text="Category"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/caloryCount" />
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="8dp"
+                android:text="Calory Count"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/preparationTimeTextField" />
+
+            <EditText
+                android:id="@+id/caloryCount"
+                android:layout_width="216dp"
+                android:layout_height="65dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="24dp"
+                android:ems="10"
+                android:hint="Calory Count"
+                android:inputType="number"
+                android:text="10"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView8" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 

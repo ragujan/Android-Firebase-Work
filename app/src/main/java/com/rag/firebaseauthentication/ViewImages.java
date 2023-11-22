@@ -1,27 +1,15 @@
 package com.rag.firebaseauthentication;
 
-import static com.rag.firebaseauthentication.util.Constants.foodImageFolderPath;
-
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.net.Uri;
 import android.os.Bundle;
 
-import com.bumptech.glide.Glide;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.ListResult;
-import com.google.firebase.storage.StorageReference;
 import com.rag.firebaseauthentication.adapters.ImageListAdapter;
 import com.rag.firebaseauthentication.databinding.ActivityViewImagesBinding;
 import com.rag.firebaseauthentication.domain.ImageListDomain;
-import com.rag.firebaseauthentication.util.ListImageUrls;
-import com.rag.firebaseauthentication.util.ListenerUtil;
-import com.squareup.picasso.Picasso;
+import com.rag.firebaseauthentication.util.firebaseUtil.ListImageUrls;
 
 import java.util.LinkedList;
 import java.util.List;

@@ -50,7 +50,7 @@ public class FireStoreTest extends AppCompatActivity {
     public void addData(){
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         String description = "Very good highly designed";
-        FoodDomain foodDomain = new FoodDomain("Chees Pizza 3","200.00",description,50,5, FastFoodCategory.PIZZA);
+        FoodDomain foodDomain = new FoodDomain("Chees Pizza 3","200.00",description,50,5, FastFoodCategory.PIZZA.toString(), false,"empty url");
         Map<String, Object> fastFoodItem = new HashMap<>();
         fastFoodItem.put("title",foodDomain.getTitle());
         fastFoodItem.put("price",foodDomain.getPrice());

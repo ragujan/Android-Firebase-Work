@@ -7,23 +7,40 @@ public class FoodDomain {
     private String description;
     private Integer preparationTime;
     private Integer calories;
-    private FastFoodCategory fastFoodCategory;
+    private String fastFoodCategory;
+
+    private Boolean isAvailable;
+
+    private String imageUrl;
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public Boolean getAvailable() {
+        return isAvailable;
+    }
+
+    public void setAvailable(Boolean available) {
+        isAvailable = available;
+    }
 
     public FoodDomain() {
     }
 
-    public FoodDomain(String title
-            , String price
-            , String description
-            , Integer preparationTime
-            , int calories
-            , FastFoodCategory fastFoodCategory) {
+    public FoodDomain(String title, String price, String description, Integer preparationTime, Integer calories, String fastFoodCategory, Boolean isAvailable, String imageUrl) {
         this.title = title;
         this.price = price;
         this.description = description;
         this.preparationTime = preparationTime;
         this.calories = calories;
         this.fastFoodCategory = fastFoodCategory;
+        this.isAvailable = isAvailable;
+        this.imageUrl = imageUrl;
     }
 
     public String getTitle() {
@@ -66,11 +83,11 @@ public class FoodDomain {
         this.calories = calories;
     }
 
-    public FastFoodCategory getFastFoodCategory() {
+    public String getFastFoodCategory() {
         return fastFoodCategory;
     }
 
-    public void setFastFoodCategory(FastFoodCategory fastFoodCategory) {
+    public void setFastFoodCategory(String fastFoodCategory) {
         this.fastFoodCategory = fastFoodCategory;
     }
 }

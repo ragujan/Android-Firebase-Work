@@ -1,9 +1,8 @@
-package com.rag.firebaseauthentication.util;
+package com.rag.firebaseauthentication.util.firebaseUtil;
 
-import static com.rag.firebaseauthentication.util.Constants.foodImageFolderPath;
+import static com.rag.firebaseauthentication.util.Constants.FOOD_IMAGE_FOLDER_PATH;
 
 import android.net.Uri;
-import android.util.Log;
 
 import androidx.annotation.NonNull;
 
@@ -28,7 +27,7 @@ public class ListImageUrls {
             List<Uri> imageUrls = new LinkedList<>();
             FirebaseStorage storage = FirebaseStorage.getInstance();
             StorageReference storageRef = storage.getReference();
-            StorageReference listRef = storage.getReference().child(foodImageFolderPath);
+            StorageReference listRef = storage.getReference().child(FOOD_IMAGE_FOLDER_PATH);
             listRef.listAll().addOnSuccessListener(new OnSuccessListener<ListResult>() {
 
                 @Override
@@ -71,7 +70,7 @@ public class ListImageUrls {
     }
 
     private static Single<Uri> getImageUrl(StorageReference storageRef, String imageName) {
-        String path = foodImageFolderPath + "/" + imageName;
+        String path = FOOD_IMAGE_FOLDER_PATH + "/" + imageName;
         final StorageReference myRef = storageRef.child("foodImages/"+imageName);
 
         return Single.create(emitter -> {
