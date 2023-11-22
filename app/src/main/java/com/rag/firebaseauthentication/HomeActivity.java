@@ -23,6 +23,7 @@ import com.rag.firebaseauthentication.util.ListenerUtil;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class HomeActivity extends AppCompatActivity {
@@ -71,6 +72,8 @@ public class HomeActivity extends AppCompatActivity {
         ListenerUtil.onClickBtnIntent(binding.viewImagesBtn,context, ViewImages.class );
         ListenerUtil.onClickBtnIntent(binding.uploadImageBtn,context, UploadImage.class);
         ListenerUtil.onClickBtnIntent(binding.firestoreTestBtn,context, FireStoreTest.class);
+        ListenerUtil.onClickBtnIntent(binding.viewFoodItemsBtn,context,ViewFoodItems.class);
+
 
     }
 
