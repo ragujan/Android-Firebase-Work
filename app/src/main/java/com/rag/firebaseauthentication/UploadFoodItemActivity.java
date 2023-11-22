@@ -27,7 +27,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class UploadImage extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class UploadFoodItemActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
 
     ActivityUploadImageBinding binding;
@@ -151,7 +151,7 @@ public class UploadImage extends AppCompatActivity implements AdapterView.OnItem
                     // Proceed to the next steps
                 } else {
                     // Display validation error message
-                    Toast.makeText(UploadImage.this, validationMessage.toString(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(UploadFoodItemActivity.this, validationMessage.toString(), Toast.LENGTH_LONG).show();
                 }
 
 //                isValid = true;
@@ -184,7 +184,7 @@ public class UploadImage extends AppCompatActivity implements AdapterView.OnItem
                                                                 binding.categorySpinner.setSelection(0);
                                                                 uniqueImageName = "";
                                                                 binding.chosenImage.setImageDrawable(null);
-                                                                Toast.makeText(UploadImage.this, "Fast Food Items uploaded Successfully", Toast.LENGTH_SHORT).show();
+                                                                Toast.makeText(UploadFoodItemActivity.this, "Fast Food Items uploaded Successfully", Toast.LENGTH_SHORT).show();
 
                                                             },
                                                             throwable -> {
@@ -202,7 +202,7 @@ public class UploadImage extends AppCompatActivity implements AdapterView.OnItem
                                     }
                             );
                 }else{
-                    Toast.makeText(UploadImage.this, "Invalie details", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(UploadFoodItemActivity.this, "Invalie details", Toast.LENGTH_SHORT).show();
                 }
             }
         });

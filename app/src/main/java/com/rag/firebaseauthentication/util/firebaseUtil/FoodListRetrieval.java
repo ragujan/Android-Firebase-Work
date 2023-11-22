@@ -57,8 +57,8 @@ public class FoodListRetrieval {
 
                                     if (snapshot != null && snapshot.exists()) {
                                         Log.d(TAG, "Current data: " + snapshot.getData());
-                                        FoodDomain foodDomain = snapshot.toObject(FoodDomain.class);
-                                        foodDomainList.add(foodDomain);
+//                                        FoodDomain foodDomain = snapshot.toObject(FoodDomain.class);
+//                                        foodDomainList.add(foodDomain);
 
 
                                     } else {

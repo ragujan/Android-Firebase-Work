@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import com.rag.firebaseauthentication.adapters.ImageListAdapter;
@@ -14,7 +15,7 @@ import com.rag.firebaseauthentication.util.firebaseUtil.ListImageUrls;
 import java.util.LinkedList;
 import java.util.List;
 
-public class ViewImages extends AppCompatActivity {
+public class ViewImagesActivity extends AppCompatActivity {
 
     List<String> imageNames = new LinkedList<>();
     ActivityViewImagesBinding binding;
@@ -29,12 +30,13 @@ public class ViewImages extends AppCompatActivity {
                 "https://firebasestorage.googleapis.com/v0/b/fir-authenticationtest-af44e.appspot.com/o/foodImages%2Fai_zoom_pic.jpg?alt=media&token=281a1603-600c-49d4-8be6-877b4c7d8146";
         getImages();
     }
+   @SuppressLint("CheckResult")
    public void getImages(){
        ListImageUrls.getAllImageUrls().subscribe(
 
              imageNames->{
                  imageNames.stream().forEach(e-> System.out.println("urls are "+e));
-                 GridLayoutManager gridLayoutManager = new GridLayoutManager(ViewImages.this, 2, RecyclerView.VERTICAL,false);
+                 GridLayoutManager gridLayoutManager = new GridLayoutManager(ViewImagesActivity.this, 2, RecyclerView.VERTICAL,false);
                  recyclerView  = findViewById(R.id.recyclerViewListAllImages);
                  recyclerView.setLayoutManager(gridLayoutManager);
 

@@ -23,13 +23,12 @@ import com.rag.firebaseauthentication.util.ListenerUtil;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class HomeActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
-    private ActivityHomeBinding binding;
 
+    private ActivityHomeBinding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,15 +63,15 @@ public class HomeActivity extends AppCompatActivity {
         binding.uploadImageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(HomeActivity.this, UploadImage.class);
+                Intent intent = new Intent(HomeActivity.this, UploadFoodItemActivity.class);
                 startActivity(intent);
             }
         });
         Context context = this;
-        ListenerUtil.onClickBtnIntent(binding.viewImagesBtn,context, ViewImages.class );
-        ListenerUtil.onClickBtnIntent(binding.uploadImageBtn,context, UploadImage.class);
+        ListenerUtil.onClickBtnIntent(binding.viewImagesBtn,context, ViewImagesActivity.class );
+        ListenerUtil.onClickBtnIntent(binding.uploadImageBtn,context, UploadFoodItemActivity.class);
         ListenerUtil.onClickBtnIntent(binding.firestoreTestBtn,context, FireStoreTest.class);
-        ListenerUtil.onClickBtnIntent(binding.viewFoodItemsBtn,context,ViewFoodItems.class);
+        ListenerUtil.onClickBtnIntent(binding.viewFoodItemsBtn,context, ViewFoodItemsActivity.class);
 
 
     }

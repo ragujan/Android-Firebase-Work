@@ -16,16 +16,16 @@
         android:theme="@style/Theme.FirebaseAuthentication"
         tools:targetApi="31">
         <activity
-            android:name=".ViewFoodItems"
+            android:name=".ViewFoodItemsActivity"
             android:exported="false" />
         <activity
             android:name=".FireStoreTest"
             android:exported="false" />
         <activity
-            android:name=".ViewImages"
+            android:name=".ViewImagesActivity"
             android:exported="false" />
         <activity
-            android:name=".UploadImage"
+            android:name=".UploadFoodItemActivity"
             android:exported="false" />
         <activity
             android:name=".RxTest"
