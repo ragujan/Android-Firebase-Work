@@ -7,6 +7,7 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.PickVisualMediaRequest;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -17,7 +18,7 @@ import android.widget.Toast;
 
 import androidx.activity.result.contract.ActivityResultContracts.PickVisualMedia;
 
-import com.rag.firebaseauthentication.databinding.ActivityUploadImageBinding;
+import com.rag.firebaseauthentication.databinding.ActivityUploadFoodItemBinding;
 import com.rag.firebaseauthentication.domain.FastFoodCategory;
 import com.rag.firebaseauthentication.domain.FoodDomain;
 import com.rag.firebaseauthentication.util.firebaseUtil.UploadFoodItem;
@@ -30,7 +31,7 @@ import java.util.stream.Stream;
 public class UploadFoodItemActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
 
-    ActivityUploadImageBinding binding;
+    ActivityUploadFoodItemBinding binding;
     String uniqueImageName = "";
 
     String selectedCategoryName = "";
@@ -38,7 +39,7 @@ public class UploadFoodItemActivity extends AppCompatActivity implements Adapter
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityUploadImageBinding.inflate(getLayoutInflater());
+        binding = ActivityUploadFoodItemBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         ActivityResultLauncher<PickVisualMediaRequest> pickMedia = registerForActivityResult(new PickVisualMedia(), uri -> {
             // Callback is invoked after the user selects a media item or closes the
@@ -54,6 +55,7 @@ public class UploadFoodItemActivity extends AppCompatActivity implements Adapter
 
         loadCategorySpinner();
         binding.chooseImageBtn.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("CheckResult")
             @Override
             public void onClick(View view) {
                 // Launch the photo picker and let the user choose only images.
@@ -69,6 +71,7 @@ public class UploadFoodItemActivity extends AppCompatActivity implements Adapter
             }
         });
         binding.UploadFoodBtn.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("CheckResult")
             @Override
             public void onClick(View view) {
 

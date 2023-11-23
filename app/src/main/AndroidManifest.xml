@@ -18,6 +18,9 @@
         <activity android:name=".TestActivity" android:exported="false">
 
         </activity>
+        <activity android:name=".UpdateFoodItemActivity" android:exported="false">
+
+        </activity>
         <activity
             android:name=".ViewFoodItemsActivity"
             android:exported="false" />
