@@ -25,7 +25,7 @@ import java.util.Map;
 public class ViewFoodItemsActivity extends AppCompatActivity {
     private FoodItemRetrievelViewModelV2 viewModel;
 
-    private AllFoodListAdapter recyclerViewAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,18 +36,18 @@ public class ViewFoodItemsActivity extends AppCompatActivity {
     }
 
     @SuppressLint("CheckResult")
-    public void viewFoodItems(){
-        recyclerViewAdapter = new AllFoodListAdapter(new LinkedList<>());
+    public void viewFoodItems() {
+        AllFoodListAdapter recyclerViewAdapter = new AllFoodListAdapter(new LinkedList<>());
         FoodListRetrievalV3.getAllFoods(recyclerViewAdapter)
                 .subscribe(
-                        resultsSet->{
+                        resultsSet -> {
 
-                            if(resultsSet.get(Constants.DATA_RETRIEVAL_STATUS).equals("Success")){
+                            if (resultsSet.get(Constants.DATA_RETRIEVAL_STATUS).equals("Success")) {
                                 List<FoodDomainRetrieval> foodDomainList = (List<FoodDomainRetrieval>) resultsSet.get("foodDomainList");
                                 AllFoodListAdapter adapter = (AllFoodListAdapter) resultsSet.get("adapter");
-                                Map<String,Object> map = new HashMap<>();
-                                map.put("foodDomainList",foodDomainList);
-                                map.put("adapter",adapter);
+                                Map<String, Object> map = new HashMap<>();
+                                map.put("foodDomainList", foodDomainList);
+                                map.put("adapter", adapter);
                                 viewModel.setFoodItemsRetrieved(map);
                             }
                         },
@@ -57,6 +57,7 @@ public class ViewFoodItemsActivity extends AppCompatActivity {
                 );
 
     }
+
     private void loadFragment(Fragment fragment) {
         FragmentManager manager = getSupportFragmentManager();
         manager.beginTransaction().replace(R.id.foodItemViewFrameLayout, fragment.getClass(), null)

@@ -48,6 +48,7 @@ public class FoodListRetrievalV3 {
                                         emitter.onError(e);
                                         return;
                                     }
+                                    foodDomainList.clear();
                                     for (QueryDocumentSnapshot document : value) {
                                         FoodDomainRetrieval foodDomainRetrieval = (FoodDomainRetrieval) document.toObject(FoodDomainRetrieval.class);
                                         String id = document.getId();

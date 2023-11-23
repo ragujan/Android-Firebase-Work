@@ -60,7 +60,6 @@ public class FoodItemDisplayFragment extends Fragment {
         // Inflate the layout for this fragment
         binding = FragmentFoodItemDisplayBinding.inflate(getLayoutInflater());
         itemViewModel = new ViewModelProvider(requireActivity()).get(FoodItemRetrievelViewModelV2.class);
-        System.out.println("on create view, step 2");
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
         itemViewModel.getFoodItemRetrieved().observe(getViewLifecycleOwner(), item -> {
@@ -71,10 +70,7 @@ public class FoodItemDisplayFragment extends Fragment {
 
 
             List<FoodDomainRetrieval> foodDomainRetrievalList = (List<FoodDomainRetrieval>) item.get("foodDomainList");
-//            recyclerViewAdapter = new AllFoodListAdapter(foodDomainRetrievalList);
             recyclerViewAdapter = (AllFoodListAdapter) item.get("adapter");
-//            recyclerViewAdapter.setFoodDomainList(foodDomainRetrievalList);
-
             recyclerView.setAdapter(recyclerViewAdapter);
 
 

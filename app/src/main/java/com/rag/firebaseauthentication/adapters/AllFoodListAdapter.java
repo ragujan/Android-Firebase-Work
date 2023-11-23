@@ -83,7 +83,7 @@ public class AllFoodListAdapter extends RecyclerView.Adapter<AllFoodListAdapter.
 
 
     public void updateData(List<FoodDomainRetrieval> newData) {
-        foodDomainList.clear();
+//        foodDomainList.clear();
 
         foodDomainList = newData;
         notifyDataSetChanged();
