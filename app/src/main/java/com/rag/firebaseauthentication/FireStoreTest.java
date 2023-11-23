@@ -17,6 +17,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.rag.firebaseauthentication.domain.FastFoodCategory;
 import com.rag.firebaseauthentication.domain.FoodDomain;
+import com.rag.firebaseauthentication.util.Constants;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -46,6 +47,11 @@ public class FireStoreTest extends AppCompatActivity {
                         }
                     }
                 });
+
+
+
+
+
     }
     public void addData(){
         FirebaseFirestore db = FirebaseFirestore.getInstance();

@@ -14,14 +14,18 @@ import android.widget.Toast;
 
 import androidx.fragment.app.DialogFragment;
 
+import com.rag.firebaseauthentication.util.firebaseUtil.UpdateData;
+
 public class ChangeFoodStatusDialogFragment extends DialogFragment {
     boolean availableStatus = false;
+    String uniqueId;
 
-    public ChangeFoodStatusDialogFragment(boolean availableStatus) {
+    public ChangeFoodStatusDialogFragment(String uniqueId, boolean availableStatus) {
         this.availableStatus = availableStatus;
+        this.uniqueId = uniqueId;
     }
 
-//    @SuppressLint("ResourceAsColor")
+    //    @SuppressLint("ResourceAsColor")
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 
@@ -31,26 +35,36 @@ public class ChangeFoodStatusDialogFragment extends DialogFragment {
         View view = inflater.inflate(R.layout.availability_status_change_dialog, null);
         TextView viewText = (TextView) view.findViewById(R.id.statusTextDialogBox);
         Button button = (Button) view.findViewById(R.id.switchAvailableBtn);
-
-        if(!availableStatus){
+        System.out.println("id is " + uniqueId);
+        if (!availableStatus) {
             viewText.setText("Unavailable");
             viewText.setTextColor(Color.parseColor("#C70039"));
             button.setText("Make Available");
 
-        }else{
+        } else {
             viewText.setText("available");
             viewText.setTextColor(Color.parseColor("#0BDA51"));
             button.setText("Make Unavailable");
         }
 
         button.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("CheckResult")
             @Override
             public void onClick(View view) {
-                dismiss();
+                UpdateData.updateFoodStatus(uniqueId, !availableStatus)
+                        .subscribe(
+                                document -> {
+                                    dismiss();
+
+                                }
+                                ,
+                                throwable -> {
+
+                                }
+                        );
             }
         });
         builder.setView(view);
-
 
 
         return builder.create();

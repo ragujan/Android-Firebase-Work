@@ -5,7 +5,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,18 +14,17 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.rag.firebaseauthentication.ChangeFoodStatusDialogFragment;
 import com.rag.firebaseauthentication.R;
-import com.rag.firebaseauthentication.StartGameDialogFragment;
-import com.rag.firebaseauthentication.domain.FoodDomain;
+import com.rag.firebaseauthentication.domain.FoodDomainRetrieval;
 
 import java.util.List;
 
 public class AllFoodListAdapter extends RecyclerView.Adapter<AllFoodListAdapter.ViewHolder> {
 
 
-    List<FoodDomain> foodDomainList;
+    List<FoodDomainRetrieval> foodDomainList;
     ViewGroup parent;
 
-    public AllFoodListAdapter(List<FoodDomain> foodDomainList) {
+    public AllFoodListAdapter(List<FoodDomainRetrieval> foodDomainList) {
         this.foodDomainList = foodDomainList;
     }
 
@@ -42,7 +40,8 @@ public class AllFoodListAdapter extends RecyclerView.Adapter<AllFoodListAdapter.
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-        FoodDomain foodDomain = foodDomainList.get(position);
+        FoodDomainRetrieval foodDomain = foodDomainList.get(position);
+
         holder.foodTitle.setText(foodDomain.getTitle().toString());
         holder.foodPrice.setText(foodDomain.getPrice().toString());
         if (foodDomain.getAvailable() == true) {
@@ -64,7 +63,7 @@ public class AllFoodListAdapter extends RecyclerView.Adapter<AllFoodListAdapter.
 
 
 //               new StartGameDialogFragment().show(activity.getSupportFragmentManager(),"test game start");
-                new ChangeFoodStatusDialogFragment(foodDomain.getAvailable()).show(activity.getSupportFragmentManager(),"test change status");
+                new ChangeFoodStatusDialogFragment(foodDomain.getUniqueId(),foodDomain.getAvailable()).show(activity.getSupportFragmentManager(),"test change status");
 
             }
         });
@@ -73,6 +72,12 @@ public class AllFoodListAdapter extends RecyclerView.Adapter<AllFoodListAdapter.
     @Override
     public int getItemCount() {
         return foodDomainList.size();
+    }
+
+
+    public void updateData(List<FoodDomainRetrieval> newData){
+        foodDomainList = newData;
+        notifyDataSetChanged();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {

@@ -9,10 +9,12 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import com.rag.firebaseauthentication.domain.FoodDomain;
+import com.rag.firebaseauthentication.domain.FoodDomainRetrieval;
 import com.rag.firebaseauthentication.helpers.FoodItemRetrievelViewModel;
 import com.rag.firebaseauthentication.helpers.ItemViewModel;
 import com.rag.firebaseauthentication.util.Constants;
 import com.rag.firebaseauthentication.util.firebaseUtil.FoodListRetrieval;
+import com.rag.firebaseauthentication.util.firebaseUtil.FoodListRetrieval2;
 
 import java.util.List;
 
@@ -23,18 +25,18 @@ public class ViewFoodItemsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_food_items);
         viewModel = new ViewModelProvider(this).get(FoodItemRetrievelViewModel.class);
-        viewFoodItems();
+        viewFoodItems(this);
         loadFragment(new FoodItemDisplayFragment());
     }
 
     @SuppressLint("CheckResult")
-    public void viewFoodItems(){
-        FoodListRetrieval.getAllFoods()
+    public void viewFoodItems(AppCompatActivity activity){
+        FoodListRetrieval2.getAllFoods(activity)
                 .subscribe(
                         resultsSet->{
 
                             if(resultsSet.get(Constants.DATA_RETRIEVAL_STATUS).equals("Success")){
-                                List<FoodDomain> foodDomainList = (List<FoodDomain>) resultsSet.get("foodDomainList");
+                                List<FoodDomainRetrieval> foodDomainList = (List<FoodDomainRetrieval>) resultsSet.get("foodDomainList");
                                 foodDomainList.forEach(e-> System.out.println("food title is "+e.getTitle()));
 
                                 viewModel.setFoodItemsRetrieved(foodDomainList);
