@@ -42,7 +42,7 @@ android {
                     "src\\main\\res",
                     "src\\main\\res\\fragment", "src\\main\\res", "src\\main\\res\\layouts\\viewholder",
                     "src\\main\\res",
-                    "src\\main\\res\\layouts\\fragment"
+                    "src\\main\\res\\layouts\\fragment", "src\\main\\res", "src\\main\\res\\layouts\\custom"
                 )
             }
         }

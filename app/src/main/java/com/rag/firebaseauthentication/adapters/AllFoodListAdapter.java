@@ -5,13 +5,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.rag.firebaseauthentication.ChangeFoodStatusDialogFragment;
 import com.rag.firebaseauthentication.R;
+import com.rag.firebaseauthentication.StartGameDialogFragment;
 import com.rag.firebaseauthentication.domain.FoodDomain;
 
 import java.util.List;
@@ -51,6 +55,19 @@ public class AllFoodListAdapter extends RecyclerView.Adapter<AllFoodListAdapter.
         }
         Glide.with(holder.itemView.getContext()).load(foodDomain.getImageUrl()).into(holder.foodImage);
 
+        holder.foodAvailableStatus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                Toast.makeText(holder.itemView.getContext(),"Hey",Toast.LENGTH_SHORT).show();
+
+                AppCompatActivity activity = (AppCompatActivity) view.getContext();
+
+
+//               new StartGameDialogFragment().show(activity.getSupportFragmentManager(),"test game start");
+                new ChangeFoodStatusDialogFragment(foodDomain.getAvailable()).show(activity.getSupportFragmentManager(),"test change status");
+
+            }
+        });
     }
 
     @Override
