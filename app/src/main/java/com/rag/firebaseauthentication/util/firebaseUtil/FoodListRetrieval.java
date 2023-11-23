@@ -32,7 +32,7 @@ import io.reactivex.rxjava3.core.Single;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
 public class FoodListRetrieval {
-    public static final Single<Map<String, Object>> getAllFoods(AppCompatActivity activity) {
+    public static final Single<Map<String, Object>> getAllFoods() {
         return Single.<Map<String, Object>>create(emitter -> {
 
             List<FoodDomainRetrieval> foodDomainList = new LinkedList<>();
@@ -59,17 +59,17 @@ public class FoodListRetrieval {
                                     }
 
                                     if (snapshot != null && snapshot.exists()) {
-                                        Log.d(TAG, "Current data hi hi:  " + snapshot.getData());
+//                                        Log.d(TAG, "Current data hi hi:  " + snapshot.getData());
                                         FoodDomainRetrieval foodDomainRetrieval = (FoodDomainRetrieval) snapshot.toObject(FoodDomainRetrieval.class);
-                                        String id = snapshot.getId();
-                                        System.out.println("id is " + id);
-                                        System.out.println("title is " + foodDomainRetrieval.getTitle());
-                                        System.out.println("image url is " + foodDomainRetrieval.getImageUrl());
-                                        foodDomainRetrieval.setUniqueId(id);
+//                                        String id = snapshot.getId();
+//                                        System.out.println("id is " + id);
+//                                        System.out.println("title is " + foodDomainRetrieval.getTitle());
+//                                        System.out.println("image url is " + foodDomainRetrieval.getImageUrl());
+//                                        foodDomainRetrieval.setUniqueId(id);
 //                                        foodDomainList.add(foodDomainRetrieval);
 
                                     } else {
-                                        Log.d(TAG, "Current data: null");
+//                                        Log.d(TAG, "Current data: null");
                                     }
 
                                 }
@@ -79,7 +79,9 @@ public class FoodListRetrieval {
                         dataResuts.put(Constants.DATA_RETRIEVAL_STATUS, "Success");
                         dataResuts.put("foodDomainList", foodDomainList);
 
-                        System.out.println("hey hey this is from some where else ");
+                        foodDomainList.forEach(e-> System.out.println("name is "+e.getTitle()));
+
+//                        System.out.println("hey hey this is from some where else ");
                         emitter.onSuccess(dataResuts);
                     } else {
                         dataResuts.put(Constants.DATA_RETRIEVAL_STATUS, "fail");

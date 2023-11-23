@@ -28,6 +28,13 @@ public class AllFoodListAdapter extends RecyclerView.Adapter<AllFoodListAdapter.
         this.foodDomainList = foodDomainList;
     }
 
+    public AllFoodListAdapter() {
+    }
+
+    public void setFoodDomainList(List<FoodDomainRetrieval> foodDomainList) {
+        this.foodDomainList = foodDomainList;
+    }
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -63,7 +70,7 @@ public class AllFoodListAdapter extends RecyclerView.Adapter<AllFoodListAdapter.
 
 
 //               new StartGameDialogFragment().show(activity.getSupportFragmentManager(),"test game start");
-                new ChangeFoodStatusDialogFragment(foodDomain.getUniqueId(),foodDomain.getAvailable()).show(activity.getSupportFragmentManager(),"test change status");
+                new ChangeFoodStatusDialogFragment(foodDomain.getUniqueId(), foodDomain.getAvailable()).show(activity.getSupportFragmentManager(), "test change status");
 
             }
         });
@@ -75,7 +82,9 @@ public class AllFoodListAdapter extends RecyclerView.Adapter<AllFoodListAdapter.
     }
 
 
-    public void updateData(List<FoodDomainRetrieval> newData){
+    public void updateData(List<FoodDomainRetrieval> newData) {
+        foodDomainList.clear();
+
         foodDomainList = newData;
         notifyDataSetChanged();
     }

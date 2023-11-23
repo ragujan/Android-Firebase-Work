@@ -4,42 +4,51 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 
-import com.rag.firebaseauthentication.domain.FoodDomain;
+import com.rag.firebaseauthentication.adapters.AllFoodListAdapter;
 import com.rag.firebaseauthentication.domain.FoodDomainRetrieval;
 import com.rag.firebaseauthentication.helpers.FoodItemRetrievelViewModel;
-import com.rag.firebaseauthentication.helpers.ItemViewModel;
+import com.rag.firebaseauthentication.helpers.FoodItemRetrievelViewModelV2;
 import com.rag.firebaseauthentication.util.Constants;
 import com.rag.firebaseauthentication.util.firebaseUtil.FoodListRetrieval;
-import com.rag.firebaseauthentication.util.firebaseUtil.FoodListRetrieval2;
+import com.rag.firebaseauthentication.util.firebaseUtil.FoodListRetrievalV3;
 
+import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 public class ViewFoodItemsActivity extends AppCompatActivity {
-    private FoodItemRetrievelViewModel viewModel;
+    private FoodItemRetrievelViewModelV2 viewModel;
+
+    private AllFoodListAdapter recyclerViewAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_food_items);
-        viewModel = new ViewModelProvider(this).get(FoodItemRetrievelViewModel.class);
-        viewFoodItems(this);
+        viewModel = new ViewModelProvider(this).get(FoodItemRetrievelViewModelV2.class);
+        viewFoodItems();
         loadFragment(new FoodItemDisplayFragment());
     }
 
     @SuppressLint("CheckResult")
-    public void viewFoodItems(AppCompatActivity activity){
-        FoodListRetrieval2.getAllFoods(activity)
+    public void viewFoodItems(){
+        recyclerViewAdapter = new AllFoodListAdapter(new LinkedList<>());
+        FoodListRetrievalV3.getAllFoods(recyclerViewAdapter)
                 .subscribe(
                         resultsSet->{
 
                             if(resultsSet.get(Constants.DATA_RETRIEVAL_STATUS).equals("Success")){
                                 List<FoodDomainRetrieval> foodDomainList = (List<FoodDomainRetrieval>) resultsSet.get("foodDomainList");
-                                foodDomainList.forEach(e-> System.out.println("food title is "+e.getTitle()));
-
-                                viewModel.setFoodItemsRetrieved(foodDomainList);
+                                AllFoodListAdapter adapter = (AllFoodListAdapter) resultsSet.get("adapter");
+                                Map<String,Object> map = new HashMap<>();
+                                map.put("foodDomainList",foodDomainList);
+                                map.put("adapter",adapter);
+                                viewModel.setFoodItemsRetrieved(map);
                             }
                         },
                         throwable -> {
