@@ -57,9 +57,9 @@ public class FoodListRetrievalV3 {
                                     }
                                     dataResuts.put(Constants.DATA_RETRIEVAL_STATUS, "Success");
                                     dataResuts.put("foodDomainList", foodDomainList);
-                                    foodDomainList.stream().forEach(data-> System.out.println("newly updated "+data.getTitle()));
+                                    foodDomainList.stream().forEach(data -> System.out.println("newly updated " + data.getTitle()));
                                     allFoodListAdapter.updateData(foodDomainList);
-                                    dataResuts.put("adapter",allFoodListAdapter);
+                                    dataResuts.put("adapter", allFoodListAdapter);
 
                                     emitter.onSuccess(dataResuts);
                                 }
@@ -68,5 +68,40 @@ public class FoodListRetrievalV3 {
                     );
 
         }).observeOn(Schedulers.io()).subscribeOn(AndroidSchedulers.mainThread());
+    }
+
+    public static final Single<Map<String, Object>> getSingleFoodItem(String documentId) {
+        return Single.<Map<String, Object>>create(emitter -> {
+                    Map<String, Object> dataMap = new HashMap<>();
+                    FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+                    db.collection(Constants.FAST_FOOD_ITEMS_COLLECTION_NAME).document(documentId)
+                            .get()
+                            .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                                @Override
+                                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                    if(task.isSuccessful()){
+                                        DocumentSnapshot docSnapShot = task.getResult();
+                                        DocumentReference docRef = task.getResult().getReference();
+
+                                        FoodDomainRetrieval foodDomainRetrieval = (FoodDomainRetrieval) docSnapShot.toObject(FoodDomainRetrieval.class);
+
+//                                        System.out.println("food title is "+foodDomainRetrieval.getTitle());
+                                        dataMap.put("foodDomainRetrieval",foodDomainRetrieval);
+                                        dataMap.put(Constants.DATA_RETRIEVAL_STATUS,"Success");
+                                        emitter.onSuccess(dataMap);
+
+                                    }else{
+                                        Exception exception = task.getException();
+
+                                        emitter.onError(exception);
+
+                                    }
+                                }
+                            });
+
+                })
+                .observeOn(Schedulers.single())
+                .subscribeOn(AndroidSchedulers.mainThread());
     }
 }

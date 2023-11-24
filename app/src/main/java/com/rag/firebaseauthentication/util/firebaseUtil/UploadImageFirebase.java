@@ -55,7 +55,7 @@ public class UploadImageFirebase {
                                         @Override
                                         public void onSuccess(Uri uri) {
 
-                                            System.out.println("donwload url is "+uri);
+                                            System.out.println("download url is "+uri);
                                             uploadedData.put("url",uri);
                                             uploadedData.put("uploadStatus","success");
                                             emitter.onSuccess(uploadedData);

@@ -1,5 +1,7 @@
 package com.rag.firebaseauthentication.adapters;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.rag.firebaseauthentication.ChangeFoodStatusDialogFragment;
 import com.rag.firebaseauthentication.R;
+import com.rag.firebaseauthentication.UpdateFoodItemActivity;
 import com.rag.firebaseauthentication.domain.FoodDomainRetrieval;
 
 import java.util.List;
@@ -74,6 +77,16 @@ public class AllFoodListAdapter extends RecyclerView.Adapter<AllFoodListAdapter.
 
             }
         });
+        holder.itemView.findViewById(R.id.foodItemUpdateSingleViewBtn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Context context = holder.itemView.getContext();
+                Intent intent = new Intent(context, UpdateFoodItemActivity.class);
+                intent.putExtra("documentId", foodDomain.getUniqueId());
+                context.startActivity(intent);
+            }
+        });
+
     }
 
     @Override

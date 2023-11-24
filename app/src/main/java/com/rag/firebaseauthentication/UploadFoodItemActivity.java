@@ -70,7 +70,7 @@ public class UploadFoodItemActivity extends AppCompatActivity implements Adapter
 
             }
         });
-        binding.UploadFoodBtn.setOnClickListener(new View.OnClickListener() {
+        binding.uploadFoodBtn.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("CheckResult")
             @Override
             public void onClick(View view) {

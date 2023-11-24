@@ -18,7 +18,7 @@
             android:paddingBottom="24dp">
 
             <Button
-                android:id="@+id/chooseImageBtn"
+                android:id="@+id/chooseImageUpdateBtn"
                 android:layout_width="177dp"
                 android:layout_height="52dp"
                 android:layout_marginStart="16dp"
@@ -28,7 +28,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                android:id="@+id/chosenImage"
+                android:id="@+id/chosenImageUpdate"
                 android:layout_width="374dp"
                 android:layout_height="546dp"
                 android:layout_marginStart="16dp"
@@ -37,12 +37,22 @@
                 app:layout_constraintTop_toTopOf="parent"
                 tools:srcCompat="@tools:sample/avatars" />
 
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="21dp"
+                android:text="Food Title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/chosenImageUpdate" />
+
             <EditText
-                android:id="@+id/foodTitleField"
+                android:id="@+id/foodTitleFieldUpdate"
                 android:layout_width="250dp"
                 android:layout_height="64dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="32dp"
                 android:autofillHints="Food Title"
                 android:ems="10"
                 android:hint="Food Title"
@@ -50,41 +60,31 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp"
-                android:text="Food Title"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/chosenImage" />
-
             <Button
-                android:id="@+id/uploadFoodBtn"
+                android:id="@+id/updateFoodBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="620dp"
-                android:text="Upload Food"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:text="Update Food"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/foodTitleField" />
+                app:layout_constraintTop_toBottomOf="@+id/categorySpinnerUpdate" />
 
             <TextView
                 android:id="@+id/textView4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 android:text="Food Price"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/foodTitleField" />
+                app:layout_constraintTop_toBottomOf="@+id/foodTitleFieldUpdate" />
 
             <EditText
-                android:id="@+id/foodPriceField"
+                android:id="@+id/foodPriceFieldUpdate"
                 android:layout_width="253dp"
                 android:layout_height="53dp"
-                android:layout_marginStart="20dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="24dp"
                 android:autofillHints="Price"
                 android:ems="10"
@@ -97,17 +97,17 @@
                 android:id="@+id/foodItemDescriptionLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 android:text="Food Item Description"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/foodPriceField" />
+                app:layout_constraintTop_toBottomOf="@+id/foodPriceFieldUpdate" />
 
             <EditText
-                android:id="@+id/foodItemDescriptionTextField"
+                android:id="@+id/foodItemDescriptionTextFieldUpdate"
                 android:layout_width="252dp"
                 android:layout_height="83dp"
-                android:layout_marginStart="20dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="24dp"
                 android:ems="10"
                 android:gravity="start|top"
@@ -120,17 +120,17 @@
                 android:id="@+id/preparationTimeLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
                 android:text="Preparation Time"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/foodItemDescriptionTextField" />
+                app:layout_constraintTop_toBottomOf="@+id/foodItemDescriptionTextFieldUpdate" />
 
             <EditText
-                android:id="@+id/preparationTimeTextField"
+                android:id="@+id/preparationTimeTextFieldUpdate"
                 android:layout_width="215dp"
                 android:layout_height="57dp"
-                android:layout_marginStart="20dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="24dp"
                 android:ems="10"
                 android:hint="Preparation Time"
@@ -139,40 +139,40 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/preparationTimeLabel" />
 
-            <Spinner
-                android:id="@+id/categorySpinner"
-                android:layout_width="361dp"
-                android:layout_height="61dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="28dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/categoryLabel" />
-
             <TextView
                 android:id="@+id/categoryLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
                 android:text="Category"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/caloryCount" />
+                app:layout_constraintTop_toBottomOf="@+id/calorieCountUpdate" />
+
+            <Spinner
+                android:id="@+id/categorySpinnerUpdate"
+                android:layout_width="361dp"
+                android:layout_height="61dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/categoryLabel" />
 
             <TextView
                 android:id="@+id/textView8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 android:text="Calory Count"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/preparationTimeTextField" />
+                app:layout_constraintTop_toBottomOf="@+id/preparationTimeTextFieldUpdate" />
 
             <EditText
-                android:id="@+id/caloryCount"
+                android:id="@+id/calorieCountUpdate"
                 android:layout_width="216dp"
                 android:layout_height="65dp"
-                android:layout_marginStart="20dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="24dp"
                 android:ems="10"
                 android:hint="Calory Count"
