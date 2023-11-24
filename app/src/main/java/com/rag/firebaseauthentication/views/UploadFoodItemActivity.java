@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import androidx.activity.result.contract.ActivityResultContracts.PickVisualMedia;
 
+import com.rag.firebaseauthentication.databinding.ActivityUploadFoodItemBinding;
 import com.rag.firebaseauthentication.domain.FastFoodCategory;
 import com.rag.firebaseauthentication.domain.FoodDomain;
 import com.rag.firebaseauthentication.util.firebaseUtil.UploadFoodItem;

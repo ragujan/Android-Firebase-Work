@@ -11,6 +11,7 @@ import android.view.View;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.rag.firebaseauthentication.databinding.ActivityMainBinding;
 import com.rag.firebaseauthentication.fragments.LoginFragment;
 import com.rag.firebaseauthentication.R;
 import com.rag.firebaseauthentication.fragments.RegisterFragment;
