@@ -1,4 +1,4 @@
-package com.rag.firebaseauthentication;
+package com.rag.firebaseauthentication.fragments;
 
 import static android.app.PendingIntent.getActivity;
 

@@ -1,4 +1,4 @@
-package com.rag.firebaseauthentication;
+package com.rag.firebaseauthentication.views;
 
 import static com.rag.firebaseauthentication.util.firebaseUtil.UniqueNameGenerationFirebase.observeUniqueName;
 
@@ -20,7 +20,6 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
-import com.rag.firebaseauthentication.databinding.ActivityUpdateFoodItemBinding;
 import com.rag.firebaseauthentication.domain.FastFoodCategory;
 import com.rag.firebaseauthentication.domain.FoodDomain;
 import com.rag.firebaseauthentication.domain.FoodDomainRetrieval;
@@ -29,7 +28,6 @@ import com.rag.firebaseauthentication.util.StringUtils;
 import com.rag.firebaseauthentication.util.firebaseUtil.Delete;
 import com.rag.firebaseauthentication.util.firebaseUtil.FoodListRetrievalV3;
 import com.rag.firebaseauthentication.util.firebaseUtil.UpdateData;
-import com.rag.firebaseauthentication.util.firebaseUtil.UploadFoodItem;
 import com.rag.firebaseauthentication.util.firebaseUtil.UploadImageFirebase;
 
 import java.util.List;
@@ -276,8 +274,8 @@ public class UpdateFoodItemActivity extends AppCompatActivity {
                     olderImageUrl = foodDomain.getImageUrl();
 
                     System.out.println("older image url is "+olderImageUrl);
-                    olderImageName = StringUtils.getImageUniqueName(olderImageUrl)[1];
-                    System.out.println("older image name is "+ StringUtils.getImageUniqueName(olderImageUrl)[1]);
+                    olderImageName = StringUtils.getImageNameFromUrl(olderImageUrl);
+                    System.out.println("older image name is "+ StringUtils.getImageNameFromUrl(olderImageUrl));
                     getBundle(foodDomain);
                 } else {
                     System.out.println("error error wrong wrong");

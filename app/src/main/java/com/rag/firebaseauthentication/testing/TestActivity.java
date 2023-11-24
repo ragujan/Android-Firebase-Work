@@ -1,4 +1,4 @@
-package com.rag.firebaseauthentication;
+package com.rag.firebaseauthentication.testing;
 
 import android.os.Bundle;
 

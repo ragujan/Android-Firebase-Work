@@ -1,4 +1,4 @@
-package com.rag.firebaseauthentication;
+package com.rag.firebaseauthentication.views;
 
 import static android.content.ContentValues.TAG;
 
@@ -17,7 +17,8 @@ import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.rag.firebaseauthentication.databinding.ActivityHomeBinding;
+import com.rag.firebaseauthentication.testing.FireStoreTest;
+import com.rag.firebaseauthentication.testing.TestActivity;
 import com.rag.firebaseauthentication.util.ListenerUtil;
 
 import java.util.Arrays;

@@ -1,4 +1,4 @@
-package com.rag.firebaseauthentication;
+package com.rag.firebaseauthentication.views;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -8,11 +8,12 @@ import androidx.lifecycle.ViewModelProvider;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.rag.firebaseauthentication.databinding.ActivityMainBinding;
+import com.rag.firebaseauthentication.fragments.LoginFragment;
+import com.rag.firebaseauthentication.R;
+import com.rag.firebaseauthentication.fragments.RegisterFragment;
 import com.rag.firebaseauthentication.helpers.ItemViewModel;
 
 public class MainActivity extends AppCompatActivity {

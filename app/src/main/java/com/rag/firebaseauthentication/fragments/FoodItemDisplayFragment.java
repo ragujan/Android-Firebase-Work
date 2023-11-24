@@ -1,4 +1,4 @@
-package com.rag.firebaseauthentication;
+package com.rag.firebaseauthentication.fragments;
 
 import static android.content.ContentValues.TAG;
 
@@ -26,6 +26,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.rag.firebaseauthentication.R;
 import com.rag.firebaseauthentication.adapters.AllFoodListAdapter;
 import com.rag.firebaseauthentication.databinding.FragmentFoodItemDisplayBinding;
 import com.rag.firebaseauthentication.domain.FoodDomainRetrieval;

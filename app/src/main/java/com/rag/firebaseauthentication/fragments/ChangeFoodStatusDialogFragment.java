@@ -1,4 +1,4 @@
-package com.rag.firebaseauthentication;
+package com.rag.firebaseauthentication.fragments;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import androidx.fragment.app.DialogFragment;
 
+import com.rag.firebaseauthentication.R;
 import com.rag.firebaseauthentication.util.firebaseUtil.UpdateData;
 
 public class ChangeFoodStatusDialogFragment extends DialogFragment {

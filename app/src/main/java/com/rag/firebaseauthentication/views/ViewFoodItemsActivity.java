@@ -1,20 +1,19 @@
-package com.rag.firebaseauthentication;
+package com.rag.firebaseauthentication.views;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 
+import com.rag.firebaseauthentication.fragments.FoodItemDisplayFragment;
+import com.rag.firebaseauthentication.R;
 import com.rag.firebaseauthentication.adapters.AllFoodListAdapter;
 import com.rag.firebaseauthentication.domain.FoodDomainRetrieval;
-import com.rag.firebaseauthentication.helpers.FoodItemRetrievelViewModel;
 import com.rag.firebaseauthentication.helpers.FoodItemRetrievelViewModelV2;
 import com.rag.firebaseauthentication.util.Constants;
-import com.rag.firebaseauthentication.util.firebaseUtil.FoodListRetrieval;
 import com.rag.firebaseauthentication.util.firebaseUtil.FoodListRetrievalV3;
 
 import java.util.HashMap;

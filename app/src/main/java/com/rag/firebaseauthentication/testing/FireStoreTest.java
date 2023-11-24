@@ -1,4 +1,4 @@
-package com.rag.firebaseauthentication;
+package com.rag.firebaseauthentication.testing;
 
 import static android.content.ContentValues.TAG;
 
@@ -15,6 +15,7 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.rag.firebaseauthentication.R;
 import com.rag.firebaseauthentication.domain.FastFoodCategory;
 import com.rag.firebaseauthentication.domain.FoodDomain;
 import com.rag.firebaseauthentication.util.Constants;

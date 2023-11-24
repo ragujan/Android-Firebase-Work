@@ -14,9 +14,9 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.rag.firebaseauthentication.ChangeFoodStatusDialogFragment;
+import com.rag.firebaseauthentication.fragments.ChangeFoodStatusDialogFragment;
 import com.rag.firebaseauthentication.R;
-import com.rag.firebaseauthentication.UpdateFoodItemActivity;
+import com.rag.firebaseauthentication.views.UpdateFoodItemActivity;
 import com.rag.firebaseauthentication.domain.FoodDomainRetrieval;
 
 import java.util.List;

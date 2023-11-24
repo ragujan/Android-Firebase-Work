@@ -1,4 +1,4 @@
-package com.rag.firebaseauthentication;
+package com.rag.firebaseauthentication.views;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 
+import com.rag.firebaseauthentication.R;
 import com.rag.firebaseauthentication.adapters.ImageListAdapter;
 import com.rag.firebaseauthentication.databinding.ActivityViewImagesBinding;
 import com.rag.firebaseauthentication.domain.ImageListDomain;

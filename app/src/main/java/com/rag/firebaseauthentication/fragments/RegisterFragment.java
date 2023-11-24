@@ -1,4 +1,4 @@
-package com.rag.firebaseauthentication;
+package com.rag.firebaseauthentication.fragments;
 
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
@@ -21,6 +21,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.rag.firebaseauthentication.R;
 import com.rag.firebaseauthentication.databinding.FragmentLoginBinding;
 import com.rag.firebaseauthentication.databinding.FragmentRegisterBinding;
 import com.rag.firebaseauthentication.helpers.ItemViewModel;

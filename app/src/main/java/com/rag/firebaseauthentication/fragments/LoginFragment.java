@@ -1,4 +1,4 @@
-package com.rag.firebaseauthentication;
+package com.rag.firebaseauthentication.fragments;
 
 import static android.content.ContentValues.TAG;
 
@@ -8,7 +8,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -19,7 +18,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.rag.firebaseauthentication.databinding.FragmentLoginBinding;
+import com.rag.firebaseauthentication.views.HomeActivity;
 
 public class LoginFragment extends Fragment {
     FragmentLoginBinding binding;

@@ -1,4 +1,4 @@
-package com.rag.firebaseauthentication;
+package com.rag.firebaseauthentication.views;
 
 import static android.content.ContentValues.TAG;
 import static com.rag.firebaseauthentication.util.firebaseUtil.UniqueNameGenerationFirebase.observeUniqueName;
@@ -18,7 +18,6 @@ import android.widget.Toast;
 
 import androidx.activity.result.contract.ActivityResultContracts.PickVisualMedia;
 
-import com.rag.firebaseauthentication.databinding.ActivityUploadFoodItemBinding;
 import com.rag.firebaseauthentication.domain.FastFoodCategory;
 import com.rag.firebaseauthentication.domain.FoodDomain;
 import com.rag.firebaseauthentication.util.firebaseUtil.UploadFoodItem;

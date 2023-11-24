@@ -15,32 +15,32 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FirebaseAuthentication"
         tools:targetApi="31">
-        <activity android:name=".TestActivity" android:exported="false">
+        <activity android:name=".testing.TestActivity" android:exported="false">
 
         </activity>
-        <activity android:name=".UpdateFoodItemActivity" android:exported="false">
+        <activity android:name=".views.UpdateFoodItemActivity" android:exported="false">
 
         </activity>
         <activity
-            android:name=".ViewFoodItemsActivity"
+            android:name=".views.ViewFoodItemsActivity"
             android:exported="false" />
         <activity
-            android:name=".FireStoreTest"
+            android:name=".testing.FireStoreTest"
             android:exported="false" />
         <activity
-            android:name=".ViewImagesActivity"
+            android:name=".views.ViewImagesActivity"
             android:exported="false" />
         <activity
-            android:name=".UploadFoodItemActivity"
+            android:name=".views.UploadFoodItemActivity"
             android:exported="false" />
         <activity
-            android:name=".RxTest"
+            android:name=".testing.RxTest"
             android:exported="false" />
         <activity
-            android:name=".HomeActivity"
+            android:name=".views.HomeActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".views.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
