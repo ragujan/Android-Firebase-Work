@@ -6,10 +6,17 @@ import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.graphics.Rect;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -23,6 +30,7 @@ import com.rag.firebaseauthentication.helpers.FoodItemRetrievelViewModelV2;
 import com.rag.firebaseauthentication.util.Constants;
 import com.rag.firebaseauthentication.util.SortByOptions;
 import com.rag.firebaseauthentication.util.firebaseUtil.FoodListRetrievalV3;
+import com.rag.firebaseauthentication.util.firebaseUtil.Search;
 
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -31,9 +39,12 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
+
 public class ViewFoodItemsActivity extends AppCompatActivity {
     private FoodItemRetrievelViewModelV2 viewModel;
     ActivityViewFoodItemsBinding binding;
+    boolean isTyping;
 
 
     @Override
@@ -44,6 +55,47 @@ public class ViewFoodItemsActivity extends AppCompatActivity {
         viewModel = new ViewModelProvider(this).get(FoodItemRetrievelViewModelV2.class);
         viewFoodItems();
         loadCategorySpinner();
+
+        binding.searchTextField.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                System.out.println("hey " + editable.toString());
+                String searchText = editable.toString();
+
+                viewFoodItemsBySearch(searchText);
+            }
+        });
+        binding.searchTextField.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                isTyping = b;
+                if (b) {
+                    binding.closeIconTextView.setVisibility(View.VISIBLE);
+                } else {
+                    binding.closeIconTextView.setVisibility(View.GONE);
+                }
+            }
+        });
+
+        binding.closeIconTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                binding.searchTextField.getText().clear();
+                viewFoodItems();
+                binding.searchTextField.clearFocus();
+            }
+        });
+
+
         binding.sortByCategorySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
@@ -70,27 +122,24 @@ public class ViewFoodItemsActivity extends AppCompatActivity {
         });
 
 
-//        binding.showAllBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                viewFoodItems();
-//            }
-//        });
-//
-//        binding.showAvailableOnlyBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                viewAvailableFoodItems(true);
-//            }
-//        });
-//        binding.showUnavailableOnlyBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                viewAvailableFoodItems(false);
-//            }
-//        });
-
         loadFragment(new FoodItemDisplayFragment());
+    }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent event) {
+        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+            View v = getCurrentFocus();
+            if (v instanceof EditText) {
+                Rect outRect = new Rect();
+                v.getGlobalVisibleRect(outRect);
+                if (!outRect.contains((int) event.getRawX(), (int) event.getRawY())) {
+                    v.clearFocus();
+                    InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+                }
+            }
+        }
+        return super.dispatchTouchEvent(event);
     }
 
     @SuppressLint("CheckResult")
@@ -111,6 +160,30 @@ public class ViewFoodItemsActivity extends AppCompatActivity {
                         },
                         throwable -> {
 
+                        }
+                );
+    }
+
+    @SuppressLint("CheckResult")
+    public void viewFoodItemsBySearch(String searchText) {
+
+        if (searchText.isEmpty()) return;
+        AllFoodListAdapter recyclerViewAdapter = new AllFoodListAdapter(new LinkedList<>());
+        Search.searchByText(recyclerViewAdapter, searchText).observeOn(AndroidSchedulers.mainThread())
+                .subscribe(
+                        resultsSet -> {
+
+                            if (resultsSet.get(Constants.DATA_RETRIEVAL_STATUS).equals("Success")) {
+                                List<FoodDomainRetrieval> foodDomainList = (List<FoodDomainRetrieval>) resultsSet.get("foodDomainList");
+                                AllFoodListAdapter adapter = (AllFoodListAdapter) resultsSet.get("adapter");
+                                Map<String, Object> map = new HashMap<>();
+                                map.put("foodDomainList", foodDomainList);
+                                map.put("adapter", adapter);
+                                viewModel.setFoodItemsRetrieved(map);
+                            }
+                        },
+                        throwable -> {
+                            throwable.printStackTrace();
                         }
                 );
     }

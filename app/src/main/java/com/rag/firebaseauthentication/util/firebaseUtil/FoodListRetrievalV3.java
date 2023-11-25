@@ -74,7 +74,7 @@ public class FoodListRetrievalV3 {
 
             List<FoodDomainRetrieval> foodDomainList = new LinkedList<>();
             FirebaseFirestore db = FirebaseFirestore.getInstance();
-            Map<String, Object> dataResuts = new HashMap<>();
+            Map<String, Object> dataResults = new HashMap<>();
 
             db.collection(Constants.FAST_FOOD_ITEMS_COLLECTION_NAME)
                     .whereEqualTo("available",status)
@@ -95,13 +95,13 @@ public class FoodListRetrievalV3 {
                                         foodDomainRetrieval.setUniqueId(id);
                                         foodDomainList.add(foodDomainRetrieval);
                                     }
-                                    dataResuts.put(Constants.DATA_RETRIEVAL_STATUS, "Success");
-                                    dataResuts.put("foodDomainList", foodDomainList);
+                                    dataResults.put(Constants.DATA_RETRIEVAL_STATUS, "Success");
+                                    dataResults.put("foodDomainList", foodDomainList);
                                     foodDomainList.stream().forEach(data -> System.out.println("newly updated " + data.getTitle()));
                                     allFoodListAdapter.updateData(foodDomainList);
-                                    dataResuts.put("adapter", allFoodListAdapter);
+                                    dataResults.put("adapter", allFoodListAdapter);
 
-                                    emitter.onSuccess(dataResuts);
+                                    emitter.onSuccess(dataResults);
                                 }
                             }
 
